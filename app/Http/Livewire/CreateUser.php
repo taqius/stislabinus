@@ -28,14 +28,14 @@ class CreateUser extends Component
         ], $rules);
     }
 
-    public function createUser ()
+    public function createUser()
     {
         $this->resetErrorBag();
         $this->validate();
 
         $password = $this->user['password'];
 
-        if ( !empty($password) ) {
+        if (!empty($password)) {
             $this->user['password'] = Hash::make($password);
         }
 
@@ -45,7 +45,7 @@ class CreateUser extends Component
         $this->reset('user');
     }
 
-    public function updateUser ()
+    public function updateUser()
     {
         $this->resetErrorBag();
         $this->validate();
@@ -57,7 +57,7 @@ class CreateUser extends Component
         $this->emit('saved');
     }
 
-    public function mount ()
+    public function mount()
     {
         if (!$this->user && $this->userId) {
             $this->user = User::find($this->userId);
