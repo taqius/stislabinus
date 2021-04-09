@@ -1,15 +1,15 @@
-<div class="bg-gray-100 text-gray-900 tracking-wider leading-normal">
+<div class="leading-normal tracking-wider text-gray-900 bg-gray-100">
     <div class="p-8 pt-4 mt-2 bg-white" x-data="window.__controller.dataTableMainController()" x-init="setCallback();">
         <div class="flex pb-4 -ml-3">
-            <a href="{{ $data->href->create_new }}" target="_blank" class="-ml- btn btn-primary shadow-none">
+            <a href="{{ $data->href->create_new }}" class="shadow-none -ml- btn btn-primary">
                 <span class="fas fa-plus"></span> {{ $data->href->create_new_text }}
             </a>
-            <a href="{{ $data->href->export }}" class="ml-2 btn btn-success shadow-none">
+            <a href="{{ $data->href->export }}" class="ml-2 shadow-none btn btn-success">
                 <span class="fas fa-file-export"></span> {{ $data->href->export_text }}
             </a>
         </div>
 
-        <div class="row mb-4">
+        <div class="mb-4 row">
             <div class="col form-inline">
                 Per Page: &nbsp;
                 <select wire:model="perPage" class="form-control">
@@ -26,7 +26,7 @@
 
         <div class="row">
             <div class="table-responsive">
-                <table class="table table-bordered table-striped text-sm text-gray-600">
+                <table class="table text-sm text-gray-600 table-bordered table-striped">
                     <thead>
                         {{ $head }}
                     </thead>

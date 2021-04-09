@@ -32,7 +32,6 @@ $user = auth()->user();
                 <div class="dropdown-divider"></div>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger" onclick="event.preventDefault();this.closest('form').submit();">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
