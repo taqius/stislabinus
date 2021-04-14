@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserHasSectionTable extends Migration
+class AddRoleIdToMenusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateUserHasSectionTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_has_section', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('section_id');
-            $table->timestamps();
+        Schema::table('menus', function (Blueprint $table) {
+            $table->foreignId('role_id');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateUserHasSectionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_has_section');
+        Schema::table('menus', function (Blueprint $table) {
+            $table->dropColumn('role_id');
+        });
     }
 }

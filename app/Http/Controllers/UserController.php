@@ -6,7 +6,7 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function index_view()
+    public function index()
     {
         // auth()->user()->assignRole('user');
         return view('pages.user.user-data', [

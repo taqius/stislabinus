@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SectionMenu;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 
-class SectionMenuController extends Controller
+
+class MenuController extends Controller
 {
     public function index()
     {
         return view('pages.menu.menu-data', [
-            'menu' => SectionMenu::class
+            'menu' => Menu::class
         ]);
     }
 }

@@ -17,12 +17,18 @@ class Main extends Component
     public $sortAsc = false;
     public $search = '';
 
-    protected $listeners = [ "deleteItem" => "delete_item" ];
-
+    protected $listeners = ["deleteItem" => "delete_item"];
+    protected $rules = [
+        'section_id' => 'required',
+        'name' => 'required|min:3',
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|min:8|confirmed',
+        'password_confirmation' => 'required' // livewire need this
+    ];
     public function sortBy($field)
     {
         if ($this->sortField === $field) {
-            $this->sortAsc = ! $this->sortAsc;
+            $this->sortAsc = !$this->sortAsc;
         } else {
             $this->sortAsc = true;
         }
@@ -30,7 +36,7 @@ class Main extends Component
         $this->sortField = $field;
     }
 
-    public function get_pagination_data ()
+    public function get_pagination_data()
     {
         switch ($this->name) {
             case 'user':
@@ -43,7 +49,7 @@ class Main extends Component
                     "users" => $users,
                     "data" => array_to_object([
                         'href' => [
-                            'create_new' => route('user.new'),
+                            'create_new' => 'showModal()',
                             'create_new_text' => 'Buat User Baru',
                             'export' => '#',
                             'export_text' => 'Export'
@@ -58,7 +64,7 @@ class Main extends Component
         }
     }
 
-    public function delete_item ($id)
+    public function delete_item($id)
     {
         $data = $this->model::find($id);
 

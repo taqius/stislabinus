@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSectionMenuTable extends Migration
+class CreateMenusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateSectionMenuTable extends Migration
      */
     public function up()
     {
-        Schema::create('section_menu', function (Blueprint $table) {
+        Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('section_id');
             $table->text('menu');
             $table->text('route');
             $table->text('icon');
@@ -30,6 +29,6 @@ class CreateSectionMenuTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('section_menu');
+        Schema::dropIfExists('menus');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use Spatie\Permission\Models\Role;
 
 class GuestLayout extends Component
 {
@@ -13,6 +14,8 @@ class GuestLayout extends Component
      */
     public function render()
     {
+        // Role::create(['name' => 'admin']);
+        // Role::create(['name' => 'user']);
         return view('layouts.guest');
     }
 }

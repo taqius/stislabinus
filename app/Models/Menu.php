@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SectionMenu extends Model
+class Menu extends Model
 {
     use HasFactory;
-    protected $table = 'section_menu';
     protected $guarded = [];
-    public function section()
+    public function role()
     {
-        return $this->belongsTo(Section::class);
+        return $this->belongsTo(Role::class);
     }
     public static function search($query)
     {
@@ -20,6 +19,6 @@ class SectionMenu extends Model
             : static::where('menu', 'like', '%' . $query . '%')
             ->orWhere('route', 'like', '%' . $query . '%')
             ->orWhere('icon', 'like', '%' . $query . '%')
-            ->orWhere('section', 'like', '%' . $query . '%');
+            ->orWhere('name', 'like', '%' . $query . '%');
     }
 }

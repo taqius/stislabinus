@@ -1,7 +1,7 @@
 <div class="leading-normal tracking-wider text-gray-900 bg-gray-100">
     <div class="p-8 pt-4 mt-2 bg-white" x-data="window.__controller.dataTableMainController()" x-init="setCallback();">
         <div class="flex pb-4 -ml-3">
-            <a href="{{ $data->href->create_new }}" class="shadow-none -ml- btn btn-primary">
+            <a wire:click="{{ $data->href->create_new }}" class="shadow-none -ml- btn btn-primary">
                 <span class="fas fa-plus"></span> {{ $data->href->create_new_text }}
             </a>
             <a href="{{ $data->href->export }}" class="ml-2 shadow-none btn btn-success">
