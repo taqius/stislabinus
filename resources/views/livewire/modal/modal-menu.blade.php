@@ -19,8 +19,8 @@
                                     <h1 class="text-red-500">{{ $message }}</h1>
                             @enderror
                             <div class="relative flex items-center py-2 mb-2 border-b border-teal-500">
-                                <input type="hidden" wire:model.defer='idmenu' id="idmenu">
-                                <select wire:model.defer='role_id' class="block w-full px-2 py-2 pr-8 leading-tight bg-white border-none appearance-none focus:outline-none">
+                                <input type="hidden" wire:model='idmenu' id="idmenu">
+                                <select wire:model='role_id' class="block w-full px-2 py-2 pr-8 leading-tight bg-white border-none appearance-none focus:outline-none">
                                     <option value=""> Pilih Role </option>
                                     @foreach ($role as $s)
                                     <option value="{{ $s->id }}">{{ $s->name }} </option>

@@ -8,9 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $guarded = ['id', 'created_at', 'updated_at'];
     public function menu()
     {
-        return $this->hasMany(Menu::class, 'role_id');
+        return $this->hasMany(Menu::class);
+    }
+    public static function search($query)
+    {
+        return empty($query) ? static::query()
+            : static::where('name', 'like', '%' . $query . '%');
     }
 }

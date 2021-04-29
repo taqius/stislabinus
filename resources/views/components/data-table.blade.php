@@ -1,5 +1,5 @@
-<div class="leading-normal tracking-wider text-gray-900 bg-gray-100">
-    <div class="p-8 pt-4 mt-2 bg-white" x-data="window.__controller.dataTableMainController()" x-init="setCallback();">
+<div class="leading-normal tracking-wider text-gray-900 bg-gray-400">
+    <div class="p-8 pt-4 mt-2 bg-white shadow-dark" x-data="window.__controller.dataTableMainController()" x-init="setCallback();">
         <div class="flex pb-4 -ml-3">
             <a wire:click="{{ $data->href->create_new }}" class="shadow-none -ml- btn btn-primary">
                 <span class="fas fa-plus"></span> {{ $data->href->create_new_text }}
@@ -26,11 +26,11 @@
 
         <div class="row">
             <div class="table-responsive">
-                <table class="table text-sm text-gray-600 table-bordered table-striped">
+                <table class="table text-sm text-gray-600 divide-y divide-gray-200 table-striped">
                     <thead>
                         {{ $head }}
                     </thead>
-                    <tbody>
+                    <tbody class="divide-y divide-gray-300">
                         {{ $body }}
                     </tbody>
                 </table>

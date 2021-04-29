@@ -15,9 +15,12 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->text('menu');
-            $table->text('route');
-            $table->text('icon');
+            $table->string('menu');
+            $table->string('route');
+            $table->string('icon');
+            $table->unsignedBigInteger('role_id');
+
+            $table->foreign('role_id')->references('id')->on('roles');
             $table->timestamps();
         });
     }

@@ -30,11 +30,13 @@ class Tablemenu extends Component
 
     protected $listeners = ["deleteItem" => "delete_item"];
     protected $rules = [
+        'role_id' => 'required',
         'menu' => 'required',
         'route' => 'required',
         'icon' => 'required',
     ];
     protected $messages = [
+        'role_id.required' => 'Pilih Role',
         'menu.required' => 'Isi Menu',
         'route.required' => 'Isi Route',
         'icon.required' => 'Isi Icon',
@@ -152,6 +154,7 @@ class Tablemenu extends Component
     public function clearVar()
     {
         $this->idmenu = '';
+        $this->role_id = '';
         $this->menu = '';
         $this->route = '';
         $this->icon = '';

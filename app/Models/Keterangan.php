@@ -9,5 +9,11 @@ class Keterangan extends Model
 {
     use HasFactory;
     protected $table = 'keterangan';
-    protected $guarded = [];
+    protected $guarded = ['id', 'created_at', 'updated_at'];
+    public static function search($query)
+    {
+        return empty($query) ? static::query()
+            : static::where('ket', 'like', '%' . $query . '%')
+            ->orWhere('jenisket', 'like', '%' . $query . '%');
+    }
 }

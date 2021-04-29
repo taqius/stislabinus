@@ -14,7 +14,7 @@ $user = auth()->user();
         <li class="dropdown"><a href="#" data-turbolinks="false" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             @if (!is_null($user))
             <div class="d-sm-none d-lg-inline-block">Hi, {{ $user->name }}
-                {{-- <img src="{{ asset('storage/'.$user->profile_photo_path) }}" alt="{{ $user->name }}" class="rounded-lg"> --}}
+                <img src="{{ asset('storage/'.$user->profile_photo_path) }}" alt="{{ $user->name }}" class="rounded-lg">
             </div>
                 </a>
             @else

@@ -5,6 +5,7 @@ namespace App\View\Components;
 use App\Models\Menu;
 use App\Models\Role as ModelsRole;
 use App\Models\RoleMenu;
+use App\Models\SubMenu;
 use App\Models\UserMenu;
 use App\Models\UserRole;
 use Spatie\Permission\Models\Role;

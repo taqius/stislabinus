@@ -73,7 +73,6 @@
         <livewire:scripts />
         <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" data-turbo-eval="false"></script>
         <script src="{{ mix('js/app.js') }}" defer></script>
-
         @isset($script)
             {{ $script }}
         @endisset

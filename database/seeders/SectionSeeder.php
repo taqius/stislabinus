@@ -14,11 +14,11 @@ class SectionSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('user_section')->insert([
-            'section' => 'Admin',
-        ]);
-        DB::table('user_section')->insert([
-            'section' => 'User',
-        ]);
+        // DB::table('user_section')->insert([
+        //     'section' => 'Admin',
+        // ]);
+        // DB::table('user_section')->insert([
+        //     'section' => 'User',
+        // ]);
     }
 }
