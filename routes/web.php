@@ -28,6 +28,8 @@ Route::group(["middleware" => ['auth:sanctum', 'verified']], function () {
         Route::get('/siswa', [TuController::class, 'siswa'])->name('siswa');
         Route::get('/pembayaran', [TuController::class, 'pembayaran'])->name('pembayaran');
         Route::get('/pembayaranpt', [TuController::class, 'pembayaranpt'])->name('pembayaranpt');
+        Route::get('/pengeluaran', [TuController::class, 'pengeluaran'])->name('pengeluaran');
+        Route::get('/keuangan', [TuController::class, 'keuangan'])->name('keuangan');
         Route::resource('tu', 'App\Http\Controllers\TuController');
     });
     Route::group(['middleware' => ['role:panitia']], function () {

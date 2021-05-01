@@ -4,15 +4,15 @@
             <a wire:click="{{ $data->href->create_new }}" class="shadow-none -ml- btn btn-primary">
                 <span class="fas fa-plus"></span> {{ $data->href->create_new_text }}
             </a>
-            <a href="{{ $data->href->export }}" class="ml-2 shadow-none btn btn-success">
+            {{-- <a href="{{ $data->href->export }}" class="ml-2 shadow-none btn btn-success">
                 <span class="fas fa-file-export"></span> {{ $data->href->export_text }}
-            </a>
+            </a> --}}
         </div>
 
         <div class="mb-4 row">
             <div class="col form-inline">
                 Per Page: &nbsp;
-                <select wire:model="perPage" class="form-control">
+                <select wire:model="perPage" class="form-control shadow-dark">
                     <option>10</option>
                     <option>15</option>
                     <option>25</option>
@@ -20,7 +20,7 @@
             </div>
 
             <div class="col">
-                <input wire:model="search" class="form-control" type="text" placeholder="Pencarian...">
+                <input wire:model="search" class="shadow-dark form-control" type="text" placeholder="Pencarian...">
             </div>
         </div>
 

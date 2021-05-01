@@ -5,7 +5,7 @@
                 <span class="fas fa-plus"></span> {{ $data->href->create_new_text }}
             </a>
             <a href="{{ $data->href->export }}" class="ml-2 shadow-none btn btn-success">
-                <span class="fas fa-file-export"></span> {{ $data->href->export_text }}
+                <span class="fas fa-file-import"></span> {{ $data->href->export_text }}
             </a>
         </div>
 
@@ -31,7 +31,7 @@
                 </select>
             </div>
             <div class="col-sm-5">
-                <input wire:model="search" class="form-control" type="text" placeholder="Pencarian...">
+                <input wire:model="search" class="form-control shadow-dark" type="text" placeholder="Pencarian...">
             </div>
         </div>
 

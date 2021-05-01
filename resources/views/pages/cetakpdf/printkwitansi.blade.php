@@ -148,5 +148,12 @@
         </tr>
     </table>
 </center>
+<script>
+    window.load = print_d();
+
+    function print_d() {
+        window.print();
+    }
+</script>
 </body>
 </html>

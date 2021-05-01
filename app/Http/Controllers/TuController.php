@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kelas;
 use App\Models\Pembayaran;
+use App\Models\Pengeluaran;
 use App\Models\Siswa;
 use App\Models\User;
 use PDF;
@@ -41,6 +42,16 @@ class TuController extends Controller
         return view('pages.binus.pembayaranp-data', [
             'pembayaran' => Pembayaran::class,
         ]);
+    }
+    public function pengeluaran()
+    {
+        return view('pages.binus.pengeluaran-data', [
+            'pengeluaran' => Pengeluaran::class,
+        ]);
+    }
+    public function keuangan()
+    {
+        return view('pages.binus.keuangan-data');
     }
     // public function pdf()
     // {
