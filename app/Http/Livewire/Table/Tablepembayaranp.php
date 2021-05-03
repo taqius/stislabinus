@@ -30,7 +30,7 @@ class Tablepembayaranp extends Component
 
     public $isOpen = 0;
     public $perPage = 10;
-    public $sortField = "created_at";
+    public $sortField = "tanggalbayar";
     public $sortGunabayar = '';
     public $sortTahun = '';
     public $sortAsc = false;
