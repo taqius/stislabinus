@@ -26,8 +26,8 @@ class Tablesiswa extends Component
     public $isOpen = 0;
     public $perPage = 10;
     public $sortField = "idkelas";
-    public $sortKelas = 1;
-    public $sortTahun = '2020 / 2021';
+    public $sortKelas = '';
+    public $sortTahun = '';
     public $sortAsc = false;
     public $search = '';
     public $action;

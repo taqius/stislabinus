@@ -5,11 +5,12 @@ namespace App\Http\Livewire\Table;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Siswa;
-use App\Models\Pembayaran;
 use App\Models\Kelas;
 use App\Models\Gunabayar;
+use App\Models\Keterangan;
+use App\Models\Pembayaran;
 
-class Tablepembayaranp extends Component
+class Tablepanitia extends Component
 {
     use WithPagination;
 
@@ -25,14 +26,11 @@ class Tablepembayaranp extends Component
     public $wajibbayar;
     public $jumlahbayar;
     public $jumlahbayarf;
-    public $printtu;
     public $simpan = 'Simpan';
 
     public $isOpen = 0;
     public $perPage = 10;
-    public $sortField = "tanggal";
-    public $sortGunabayar = '';
-    public $sortTahun = '';
+    public $sortField = "tanggalbayar";
     public $sortAsc = false;
     public $search = '';
     public $action;
@@ -126,26 +124,23 @@ class Tablepembayaranp extends Component
     {
         switch ($this->name) {
             case 'pembayaran':
-                $pembayarans = $this->model::searchp($this->search)
+                $pembayarans = $this->model::search($this->search)
                     ->join('siswa', 'siswa.id', '=', 'pembayaran.idsiswa')
                     ->join('kelas', 'kelas.id', '=', 'pembayaran.idkelas')
                     ->join('gunabayar', 'gunabayar.id', '=', 'pembayaran.idgunabayar')
-                    ->where('gunabayar.jenisket', 'Non-SPP')
+                    ->where('gunabayar.jenisket', 'SPP')
                     ->select(
                         'pembayaran.id as id',
                         'pembayaran.tanggalbayar as tanggal',
                         'pembayaran.jumlahbayar as jumlahbayar',
                         'pembayaran.wajibbayar as wajibbayar',
                         'pembayaran.tahun as tahun',
-                        'pembayaran.idgunabayar as idgunabayar',
                         'siswa.nama as nama',
                         'kelas.tingkat as tingkat',
                         'kelas.jurusan as jurusan',
                         'gunabayar.gunabayar as gunabayar',
                     )
                     ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
-                    ->where('idgunabayar', $this->sortGunabayar)
-                    ->where('pembayaran.tahun', $this->sortTahun)
                     ->paginate($this->perPage);
                 $siswane = [];
                 if (!empty($this->idkelas) && !empty($this->tahun)) {
@@ -160,25 +155,19 @@ class Tablepembayaranp extends Component
                     $this->wajibbayar = 'Rp. ' . number_format($cari2->wajibbayar, 0, ".", ".") . ",-";
                 }
                 $this->jumlahbayarf = 'Rp. ' . number_format(intval($this->jumlahbayar), 0, ".", ".") . ",-";
-                if (auth()->user()->hasRole('panitia')) {
-                    $this->printtu = 'print.show';
-                } else {
-                    $this->printtu = 'tu.show';
-                }
                 return [
-                    "view" => 'livewire.table.pembayaranp',
+                    "view" => 'livewire.table.pembayaran',
                     "pembayarans" => $pembayarans,
                     'kelas' => Kelas::orderBy('tingkat')->orderBy('jurusan')->get(),
                     'tahuns' => Siswa::select('tahun')->distinct()->orderBy('tahun')->get(),
                     'siswane' => $siswane,
-                    'gunane' => Gunabayar::where('jenisket', 'Non-SPP')->orderBy('urut', 'asc')->get(),
+                    'gunane' => Gunabayar::where('jenisket', 'SPP')->orderBy('urut', 'asc')->get(),
                     "data" => array_to_object([
                         'href' => [
                             'create_new' => 'showModal()',
                             'create_new_text' => 'Input Bayar',
-                            'gunabayare' => Gunabayar::where('jenisket', 'Non-SPP')->orderBy('gunabayar')->get(),
-                            'tahune' => Siswa::select('tahun')->distinct()->orderBy('tahun', 'asc')->get(),
-
+                            'export' => '#',
+                            'export_text' => 'Disabled'
                         ]
                     ])
                 ];

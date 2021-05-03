@@ -34,6 +34,7 @@ Route::group(["middleware" => ['auth:sanctum', 'verified']], function () {
     });
     Route::group(['middleware' => ['role:panitia']], function () {
         Route::get('/pembayaranp', [PanitiaController::class, 'pembayaranp'])->name('pembayaranp');
+        Route::get('/keuanganp', [PanitiaController::class, 'keuanganp'])->name('keuanganp');
         Route::resource('print', 'App\Http\Controllers\PrintController');
     });
 });

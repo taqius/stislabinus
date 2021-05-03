@@ -14,8 +14,9 @@
                 Per Page: &nbsp;
                 <select wire:model="perPage" class="form-control shadow-dark">
                     <option>10</option>
-                    <option>15</option>
-                    <option>25</option>
+                    <option>20</option>
+                    <option>30</option>
+                    <option>40</option>
                 </select>
             </div>
 

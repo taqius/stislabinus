@@ -13,4 +13,10 @@ class PanitiaController extends Controller
             'pembayaran' => Pembayaran::class
         ]);
     }
+    public function keuanganp()
+    {
+        return view('pages.binus.keuanganp2-data', [
+            'keuanganp2' => Pembayaran::class
+        ]);
+    }
 }
