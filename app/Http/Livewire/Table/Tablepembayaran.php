@@ -140,6 +140,7 @@ class Tablepembayaran extends Component
                         'gunabayar.gunabayar as gunabayar',
                     )
                     ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+                    ->orderBy('created_at', 'desc')
                     ->paginate($this->perPage);
                 $siswane = [];
                 if (!empty($this->idkelas) && !empty($this->tahun)) {
