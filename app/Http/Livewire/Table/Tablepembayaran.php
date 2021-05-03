@@ -29,7 +29,7 @@ class Tablepembayaran extends Component
 
     public $isOpen = 0;
     public $perPage = 10;
-    public $sortField = "created_at";
+    public $sortField = "tanggalbayar";
     public $sortAsc = false;
     public $search = '';
     public $action;
@@ -134,12 +134,12 @@ class Tablepembayaran extends Component
                         'pembayaran.jumlahbayar as jumlahbayar',
                         'pembayaran.wajibbayar as wajibbayar',
                         'pembayaran.tahun as tahun',
-                        'pembayaran.created_at as created_at',
                         'siswa.nama as nama',
                         'kelas.tingkat as tingkat',
                         'kelas.jurusan as jurusan',
                         'gunabayar.gunabayar as gunabayar',
                     )
+                    ->orderBy('pembayaran.created_at', 'desc')
                     ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                     ->paginate($this->perPage);
                 $siswane = [];
