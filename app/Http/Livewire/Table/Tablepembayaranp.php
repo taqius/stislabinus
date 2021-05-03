@@ -30,7 +30,7 @@ class Tablepembayaranp extends Component
 
     public $isOpen = 0;
     public $perPage = 10;
-    public $sortField = "tanggal";
+    public $sortField = "created_at";
     public $sortGunabayar = '';
     public $sortTahun = '';
     public $sortAsc = false;
@@ -144,7 +144,6 @@ class Tablepembayaranp extends Component
                         'gunabayar.gunabayar as gunabayar',
                     )
                     ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
-                    ->orderBy('created_at', 'desc')
                     ->where('idgunabayar', $this->sortGunabayar)
                     ->where('pembayaran.tahun', $this->sortTahun)
                     ->paginate($this->perPage);
