@@ -109,6 +109,7 @@ class Tablepengeluaran extends Component
                         'pengeluaran.jumlahbayar as jumlahbayar'
                     )
                     ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+                    ->orderBy('pengeluaran.created_at', 'desc')
                     ->paginate($this->perPage);
                 $this->jumlahbayarf = 'Rp. ' . number_format(intval($this->jumlahbayar), 0, ".", ".") . ",-";
                 return [

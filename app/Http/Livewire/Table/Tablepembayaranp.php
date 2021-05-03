@@ -144,6 +144,7 @@ class Tablepembayaranp extends Component
                         'gunabayar.gunabayar as gunabayar',
                     )
                     ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+                    ->orderBy('pembayaran.created_at', 'desc')
                     ->where('idgunabayar', $this->sortGunabayar)
                     ->where('pembayaran.tahun', $this->sortTahun)
                     ->paginate($this->perPage);

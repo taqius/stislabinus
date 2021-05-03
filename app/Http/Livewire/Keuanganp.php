@@ -48,7 +48,7 @@ class Keuanganp extends Component
                     'gunabayar.gunabayar as gunabayar',
                 )
                 ->orderBy('pembayaran.tanggalbayar', 'desc')
-                ->orderBy('created_at', 'desc')
+                ->orderBy('pembayaran.created_at', 'desc')
                 ->get();
             $this->isPemasukan = true;
         } else {
