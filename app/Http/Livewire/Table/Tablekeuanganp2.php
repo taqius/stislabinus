@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Table;
 
 use App\Models\Gunabayar;
+use App\Models\Kelas;
 use App\Models\Pembayaran;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -15,18 +16,17 @@ class Tablekeuanganp2 extends Component
     public $model;
     public $name;
     public $pilihgunane;
-    public $tahun;
     public $pilihlaporan;
     public $pilihtahun;
     public $saldogunane;
     public $gunabayare;
-    public $pemasukans;
 
     public $isOpen = 0;
     public $perPage = 10;
     public $sortField = "tanggalbayar";
     public $sortGunabayar = '';
     public $sortTahun = '';
+    public $sortKelas = '';
     public $sortAsc = false;
     public $search = '';
     public $action;
@@ -53,6 +53,7 @@ class Tablekeuanganp2 extends Component
                     ->join('gunabayar', 'gunabayar.id', '=', 'pembayaran.idgunabayar')
                     ->where('pembayaran.idgunabayar', $this->sortGunabayar)
                     ->where('pembayaran.tahun', $this->sortTahun)
+                    ->where('pembayaran.idkelas', $this->sortKelas)
                     ->select(
                         'pembayaran.id as id',
                         'pembayaran.tanggalbayar as tanggal',
@@ -65,13 +66,23 @@ class Tablekeuanganp2 extends Component
                     )
                     ->orderBy('pembayaran.tanggalbayar', 'desc')
                     ->paginate($this->perPage);
+                if (!empty($this->pilihgunane) && !empty($this->pilihtahun)) {
+                    $this->saldogunane = Pembayaran::where('idgunabayar', $this->pilihgunane)
+                        ->where('tahun', $this->pilihtahun)
+                        ->sum('jumlahbayar');
+                    $cari = Gunabayar::findOrFail($this->pilihgunane);
+                    $this->gunabayare = $cari->gunabayar;
+                }
                 return [
                     "view" => 'livewire.table.keuanganp2',
                     "keuanganp2s" => $keuanganp2s,
+                    'tahuns' => Siswa::select('tahun')->distinct()->orderBy('tahun', 'asc')->get(),
+                    'gunans' => Gunabayar::where('jenisket', 'Non-SPP')->orderBy('gunabayar')->get(),
                     "data" => array_to_object([
                         'href' => [
                             'gunabayare' => Gunabayar::where('jenisket', 'Non-SPP')->orderBy('gunabayar')->get(),
                             'tahune' => Siswa::select('tahun')->distinct()->orderBy('tahun', 'asc')->get(),
+                            'kelase' => Kelas::orderBy('tingkat', 'asc')->orderBy('jurusan', 'asc')->get(),
                         ]
                     ])
                 ];

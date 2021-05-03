@@ -10,6 +10,13 @@
                     <option>40</option>
                 </select>
                 &nbsp; &nbsp;
+                <select wire:model="sortKelas" class="form-control">
+                    <option value=""> Kelas </option>
+                    @foreach ($data->href->kelase as $k)
+                    <option value="{{ $k->id }}"> {{ $k->tingkat}}-{{ $k->jurusan }}</option>
+                    @endforeach
+                </select>
+                &nbsp; &nbsp;
                 <select wire:model="sortGunabayar" class="form-control">
                     <option value=""> Guna Bayar</option>
                     @foreach ($data->href->gunabayare as $k)
