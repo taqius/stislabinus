@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create(
+        $usernya = [
             [
                 'name' => 'Eka Aribawa,S.Pd.I',
                 'email' => 'arieka@binusasmg.sch.id',
@@ -95,6 +95,7 @@ class UserSeeder extends Seeder
                 'email' => 'arifadiwijaya@binusasmg.sch.id',
                 'password' => bcrypt('12345678')
             ],
-        );
+        ];
+        User::insert($usernya);
     }
 }
