@@ -134,6 +134,7 @@ class Tablepembayaran extends Component
                         'pembayaran.jumlahbayar as jumlahbayar',
                         'pembayaran.wajibbayar as wajibbayar',
                         'pembayaran.tahun as tahun',
+                        'pembayaran.created_at as created_at',
                         'siswa.nama as nama',
                         'kelas.tingkat as tingkat',
                         'kelas.jurusan as jurusan',
