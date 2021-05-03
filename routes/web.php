@@ -18,6 +18,7 @@ Route::group(["middleware" => ['auth:sanctum', 'verified']], function () {
 
     Route::group(['middleware' => ['role:admin']], function () {
         Route::get('/user', [UserController::class, 'index'])->name('user');
+        Route::view('/user/new', 'pages.user.user-new')->name('user.new');
         Route::get('/userrole', [UserController::class, 'index_role'])->name('user.role');
         Route::get('/role', [UserController::class, 'role_view'])->name('role');
         Route::get('/menu', [MenuController::class, 'index'])->name('menu');
