@@ -65,6 +65,7 @@ class Tablekeuanganp2 extends Component
                         'gunabayar.gunabayar as gunabayar',
                     )
                     ->orderBy('pembayaran.tanggalbayar', 'desc')
+                    ->orderBy('created_at', 'desc')
                     ->paginate($this->perPage);
                 if (!empty($this->pilihgunane) && !empty($this->pilihtahun)) {
                     $this->saldogunane = Pembayaran::where('idgunabayar', $this->pilihgunane)
