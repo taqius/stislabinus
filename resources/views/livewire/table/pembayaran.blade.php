@@ -1,5 +1,5 @@
 <div>
-    <x-data-table :data="$data" :model="$pembayarans">
+    <x-data-table-pembayaran :data="$data" :model="$pembayarans">
         <x-slot name="head">
             <tr>
                 <th><a wire:click.prevent="sortBy('id')" role="button" href="#">
@@ -51,7 +51,7 @@
                 </tr>
             @endforeach
         </x-slot>
-    </x-data-table>
+    </x-data-table-pembayaran>
     <x-notify-message on="saved" type="success" :message="__($button['submit_response_notyf'])" />
     @if ($isOpen)
     @include('livewire.modal.modal-pembayaran')

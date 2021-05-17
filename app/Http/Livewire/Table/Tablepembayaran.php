@@ -164,7 +164,7 @@ class Tablepembayaran extends Component
                     'gunane' => Gunabayar::where('jenisket', 'SPP')->orderBy('urut', 'asc')->get(),
                     "data" => array_to_object([
                         'href' => [
-                            'create_new' => 'showModal()',
+                            'create_new' => route('pembayaran.new'),
                             'create_new_text' => 'Input Bayar',
                             'export' => '#',
                             'export_text' => 'Disabled'

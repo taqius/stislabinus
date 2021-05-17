@@ -53,6 +53,10 @@ class TuController extends Controller
     {
         return view('pages.binus.keuangan-data');
     }
+    public function pembayarannew()
+    {
+        return view('pages.binus.pembayaran2-data');
+    }
     // public function pdf()
     // {
 
