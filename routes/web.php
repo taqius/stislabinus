@@ -7,6 +7,7 @@ use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PrintController;
 use App\Http\Controllers\TuController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WalikelasController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,6 +38,11 @@ Route::group(["middleware" => ['auth:sanctum', 'verified']], function () {
     Route::group(['middleware' => ['role:panitia']], function () {
         Route::get('/pembayaranp', [PanitiaController::class, 'pembayaranp'])->name('pembayaranp');
         Route::get('/keuanganp', [PanitiaController::class, 'keuanganp'])->name('keuanganp');
+        Route::get('/pembayaranperkelasp', [PanitiaController::class, 'pembayaranperkelas'])->name('pembayaranperkelasp');
         Route::resource('print', 'App\Http\Controllers\PrintController');
+    });
+    Route::group(['middleware' => ['role:wali kelas']], function () {
+        Route::get('/pembayaranperkelasw', [WalikelasController::class, 'pembayaranperkelas'])->name('pembayaranperkelasw');
+        Route::get('/pembayaransppperkelasw', [WalikelasController::class, 'pembayaransppperkelas'])->name('pembayaransppperkelasw');
     });
 });

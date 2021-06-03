@@ -19,4 +19,10 @@ class PanitiaController extends Controller
             'keuanganp2' => Pembayaran::class
         ]);
     }
+    public function Pembayaranperkelas()
+    {
+        return view('pages.binus.pembayaranperkelas-data', [
+            'pembayaranperkelas' => Pembayaran::class
+        ]);
+    }
 }
