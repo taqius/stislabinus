@@ -20,8 +20,6 @@ class WalikelasController extends Controller
     }
     public function cetakpdf()
     {
-        return view('pages.binus.cetakpdf-data', [
-            'cetakpdf' => Pembayaran::class
-        ]);
+        return view('pages.binus.cetakpdf-data');
     }
 }

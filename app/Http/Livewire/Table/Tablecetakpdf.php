@@ -27,6 +27,7 @@ class Tablecetakpdf extends Component
     public $sortGunabayar = '';
     public $sortTahun = '';
     public $sortKelas = '';
+    public $sortSiswa = '';
     public $sortAsc = false;
     public $search = '';
     public $action;
@@ -46,8 +47,8 @@ class Tablecetakpdf extends Component
     public function get_pagination_data()
     {
         switch ($this->name) {
-            case 'pembayaransppperkelas':
-                $pembayaransppperkelass = Siswa::search($this->search)
+            case 'cetakpdf':
+                $cetakpdfs = Siswa::search($this->search)
                     ->join('kelas', 'kelas.id', '=', 'siswa.idkelas')
                     ->select(
                         'siswa.id as id',
@@ -73,11 +74,12 @@ class Tablecetakpdf extends Component
                     $this->gunabayare = $cari->gunabayar;
                 }
                 return [
-                    "view" => 'livewire.table.pembayaransppperkelas',
-                    "pembayaransppperkelass" => $pembayaransppperkelass,
+                    "view" => 'livewire.table.cetakpdf',
+                    "cetakpdfs" => $cetakpdfs,
                     'tahuns' => Siswa::select('tahun')->distinct()->orderBy('tahun', 'asc')->get(),
                     'gunans' => Gunabayar::where('ket', '1')->orderBy('urut')->get(),
                     'gunans2' => Gunabayar::where('ket', '2')->orderBy('urut')->get(),
+                    'siswane' => Siswa::where('idkelas', $this->sortKelas)->where('tahun', $this->sortTahun)->orderBy('nama', 'asc')->get(),
                     "data" => array_to_object([
                         'href' => [
                             'tahune' => Siswa::select('tahun')->distinct()->orderBy('tahun', 'asc')->get(),

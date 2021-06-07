@@ -1,5 +1,11 @@
 {{-- Table Data --}}
 <div>
+    <select wire:model="sortSiswa" class="form-control">
+        <option value=""> Siswa </option>
+        @foreach ($siswane as $k)
+        <option value="{{ $k->id }}"> {{ $k->nama}}</option>
+        @endforeach
+    </select>
     <x-data-table-spp :data="$data" :model="$cetakpdfs">
         <x-slot name="head">
             <tr>

@@ -10,7 +10,7 @@
             {{-- Start Of Display Form --}}
             <div class="max-w-lg p-2 mx-1 my-3 bg-white rounded-md shadow-sm">
                 <div class="text-center">
-                    <h1 class="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">Pembayaran SPP</h1>
+                    <h1 class="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">Pembayaran Non-SPP</h1>
                 </div>
                 <div class="m-5">
                     <form class="w-full max-w-lg">
