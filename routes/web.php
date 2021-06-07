@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KepsekController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\PdfController;
@@ -29,6 +30,7 @@ Route::group(["middleware" => ['auth:sanctum', 'verified']], function () {
         Route::get('/kelas', [TuController::class, 'kelas'])->name('kelas');
         Route::get('/siswa', [TuController::class, 'siswa'])->name('siswa');
         Route::get('/pembayaran', [TuController::class, 'pembayaran'])->name('pembayaran');
+        Route::get('/pembayaransppperkelasw', [TuController::class, 'pembayaransppperkelas'])->name('pembayaransppperkelasw');
         Route::get('/pembayaran/new', [TuController::class, 'pembayarannew'])->name('pembayaran.new');
         Route::get('/pembayaranpt', [TuController::class, 'pembayaranpt'])->name('pembayaranpt');
         Route::get('/pengeluaran', [TuController::class, 'pengeluaran'])->name('pengeluaran');
@@ -42,7 +44,13 @@ Route::group(["middleware" => ['auth:sanctum', 'verified']], function () {
         Route::resource('print', 'App\Http\Controllers\PrintController');
     });
     Route::group(['middleware' => ['role:wali kelas']], function () {
+        Route::get('/cetakpdf', [WalikelasController::class, 'cetakpdf'])->name('cetakpdf');
         Route::get('/pembayaranperkelasw', [WalikelasController::class, 'pembayaranperkelas'])->name('pembayaranperkelasw');
         Route::get('/pembayaransppperkelasw', [WalikelasController::class, 'pembayaransppperkelas'])->name('pembayaransppperkelasw');
+    });
+    Route::group(['middleware' => ['role:kepala sekolah']], function () {
+        Route::get('/keuangan', [KepsekController::class, 'keuangan'])->name('keuangan');
+        Route::get('/pembayaranperkelasw', [KepsekController::class, 'pembayaranperkelas'])->name('pembayaranperkelasw');
+        Route::get('/pembayaransppperkelasw', [KepsekController::class, 'pembayaransppperkelas'])->name('pembayaransppperkelasw');
     });
 });

@@ -1,6 +1,6 @@
 {{-- Table Data --}}
 <div>
-    <x-data-table-spp :data="$data" :model="$pembayaransppperkelass">
+    <x-data-table-spp :data="$data" :model="$cetakpdfs">
         <x-slot name="head">
             <tr>
                 <th><a wire:click.prevent="sortBy('id')" role="button" href="#">
@@ -21,9 +21,9 @@
             </tr>
         </x-slot>
         <x-slot name="body">
-            @foreach ($pembayaransppperkelass as $key => $siswa)
+            @foreach ($cetakpdfs as $key => $siswa)
                 <tr x-data="window.__controller.dataTableController({{ $siswa->id }})">
-                    <td>{{ $pembayaransppperkelass->firstItem() + $key }}</td>
+                    <td>{{ $cetakpdfs->firstItem() + $key }}</td>
                     <td>{{ $siswa->nama }}</td>
                     <td>{{ $siswa->tingkat }} - {{ $siswa->jurusan }}</td>
                     @foreach ($gunans as $g)

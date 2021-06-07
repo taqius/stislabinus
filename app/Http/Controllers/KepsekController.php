@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class WalikelasController extends Controller
+class KepsekController extends Controller
 {
+    public function keuangan()
+    {
+        return view('pages.binus.keuangan-data');
+    }
     public function Pembayaranperkelas()
     {
         return view('pages.binus.pembayaranperkelas-data', [
@@ -16,12 +20,6 @@ class WalikelasController extends Controller
     {
         return view('pages.binus.pembayaransppperkelas-data', [
             'pembayaransppperkelas' => Pembayaran::class
-        ]);
-    }
-    public function cetakpdf()
-    {
-        return view('pages.binus.cetakpdf-data', [
-            'cetakpdf' => Pembayaran::class
         ]);
     }
 }
