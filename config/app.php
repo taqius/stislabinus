@@ -162,7 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
-        Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class,
+        // Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class,
 
 
         /*
@@ -232,7 +232,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'PDF' => Meneses\LaravelMpdf\Facades\LaravelMpdf::class,
+        // 'PDF' => Meneses\LaravelMpdf\Facades\LaravelMpdf::class,
 
     ],
 
