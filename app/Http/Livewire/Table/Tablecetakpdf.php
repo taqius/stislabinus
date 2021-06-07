@@ -9,7 +9,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Siswa;
 
-class Tablepembayaransppperkelas extends Component
+class Tablecetakpdf extends Component
 {
     use WithPagination;
 
