@@ -1,153 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <center>
+<table width="100%" style="border-bottom:double; border-width:9px; ">
+    <tr>
+        <td rowspan="4"><img src="./image/logo.png"></td>
+        <td align="center">
+            <h3>YAYASAN BINA NUSANTARA</h3>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <h2>SMK BINA NUSANTARA SEMARANG</h2>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">Jl. Kemantren No. 5 Kel.Wonosari Kec.Ngaliyan, Kota Semarang</td>
+    </tr>
+    <tr>
+        <td align="center">website : binusasmg.sch.id, WA : 081391501186</td>
+    </tr>
 
-        <table border='0' width='80%' style="padding: 10px;">
-            <tr>
-                <td rowspan="2" style="text-align: right;" width='15%'>
-                    <img src="/logo.jpg" width="90%">
-                </td>
-                <td style="text-align: center;font-size: large;font-weight: bold;" colspan="5">
-                SMK BINA NUSANTARA SEMARANG
-            </td>
-        </tr>
+</table>
+
+<div align="right">
+    Semarang, {{ gmdate('d F Y') }}
+</div>
+<table>
+    <tr>
+        <td>No.</td>
+        <td>:</td>
+        <td>{{ $nosurat }}/{{ $bulansurat }}/{{ $tahunsurat }}</td>
+    </tr>
+    <tr>
+        <td>Lamp.</td>
+        <td>:</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Hal</td>
+        <td>:</td>
+        <td>Pemberitahuan</td>
+    </tr>
+</table>
+<p> Kepada Yth,<br>
+    Bapak / Ibu Orang Tua Wali Murid <br>
+    {{ $nama }} <br>
+    Kelas {{ $kelas }}<br>
+    Di tempat</p>
+
+Assalamu'alaikum Wr. Wb.<br>
+&nbsp; &nbsp; &nbsp; &nbsp;Puji syukur kita panjatkan kehadirat Allah SWT atas limpahan karunia-Nya, semoga bapak / ibu selalu dalam lindungan-Nya. Bersama datangnya surat ini kami informasikan :
+<div>&nbsp;</div>
+<table align="center" width="75%">
+    <tbody>
         <tr>
-            <td style="text-align: center;" colspan="5">
-                Jl. Kemantren No. 5 Wonosari, Ngaliyan - Semarang: Telp 024-8662971
+            <td colspan="2" align="center" style="font-weight: bold; font-size:15">
+                Kekurangan Biaya Pendidikan
             </td>
         </tr>
+    </tbody>
+</table>
+<table align="center" width="70%" border="1" style="border: solid;">
+    <tbody>
         <tr>
-            <td style="border-top: black;" colspan="6">
-                <hr style="border: 2px solid;">
+            <td style="width: 50%;" align="center">
+                Keterangan
+            </td>
+            <td style="width: 40%;" align="center">
+                Nominal
             </td>
         </tr>
+        @foreach ($gunabayar as $g)
         <tr>
-            <td colspan="6" style="text-align: center;">
-                Kwitansi Pembayaran Sah
-            </td>
+            @php
+                $p = App\Models\Pembayaran::where('nis',$nis)->where('idgunabayar',$g->id)->sum('jumlahbayar');
+            @endphp
+            <td>{{ $g->gunabayar }}</td>
+            <td>{{ $p }}</td>
         </tr>
-        <tr>
-            <td colspan="2" style="font-weight: bold;" width="15%">
-                Telah terima dari
-            </td>
-            <td width="3%" colspan="2">
-                :
-            </td>
-            <td style="font-weight: bold;" colspan="2" width="72%">
-                Nama Siswa
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" style="font-weight: bold;">
-                Kelas
-            </td>
-            <td width="3%" colspan="2">
-                :
-            </td>
-            <td style="font-weight: bold;" colspan="2">
-                Nama Kelas
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" style="font-weight: bold;">
-                Uang Sebesar
-            </td>
-            <td width="3%" colspan="2">
-                :
-            </td>
-            <td style="font-weight: bold;" colspan="2">
-                Rp. 100.000,-
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" style="font-weight: bold;">
-                Guna Pembayaran
-            </td>
-            <td width="3%" colspan="2">
-                :
-            </td>
-            <td style="font-weight: bold;" colspan="2">
-                Juni T.A. 2020 / 2021
-            </td>
-        </tr>
-        <tr>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                &nbsp;
-            </td>
-            <td style="font-weight: bold;text-align: center;" width="35%">
-                Semarang, 29 April 2021
-            </td>
-        </tr>
-        <tr>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                &nbsp;
-            </td>
-            <td style="font-weight: bold;text-align: center;">
-                Bendahara,
-            </td>
-        </tr>
-        <tr>
-            <td colspan="6">
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td colspan="6">
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                &nbsp;
-            </td>
-            <td style="font-weight: bold;text-align: center;">
-                Lutfi Pujianti,S.E.
-            </td>
-        </tr>
-    </table>
-</center>
-</body>
-</html>
+        @endforeach
+    </tbody>
+</table>
+<div>
+    &nbsp;
+</div>
+<p> Kami berdoa semoga bapak / ibu senantiasa diberikan kelapangan dan keberkahan rizki dan ilmu yang diperoleh anak-anak bermanfaat.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Demikian pemberitahuan ini kami sampaikan, atas perhatian kami ucapkan terima kasih.<br>
+    Wassalamu'alaikum Wr. Wb.</p>
+<div align="right">
+    Kepala Sekolah,
+</div>
+<div align="right">
+    <img src="./image/TTD BARCODE.jpeg" height="75" width="75"></td>
+</div>
+<div align="right">
+    Eka Aribawa,S.Pd.I
+</div>

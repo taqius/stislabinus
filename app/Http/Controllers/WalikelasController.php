@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class WalikelasController extends Controller
@@ -20,6 +21,8 @@ class WalikelasController extends Controller
     }
     public function cetakpdf()
     {
-        return view('pages.binus.cetakpdf-data');
+        return view('pages.binus.cetakpdf-data', [
+            'cetakpdf' => Siswa::class
+        ]);
     }
 }

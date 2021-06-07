@@ -4,10 +4,12 @@ namespace App\Http\Livewire\Table;
 
 use App\Models\Gunabayar;
 use App\Models\Kelas;
-use App\Models\Pembayaran;
+use App\Models\Keterangan;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Siswa;
+use Mpdf\Mpdf;
+use Mpdf\Output\Destination;
 
 class Tablecetakpdf extends Component
 {
@@ -15,19 +17,15 @@ class Tablecetakpdf extends Component
 
     public $model;
     public $name;
-    public $pilihgunane;
-    public $pilihlaporan;
-    public $pilihtahun;
-    public $saldogunane;
-    public $gunabayare;
-
+    public $nosurat = '001/SMK.BN/SPO';
+    public $tahunsurat;
+    public $bulansurat;
+    public $bulan;
     public $isOpen = 0;
-    public $perPage = 5;
-    public $sortField = "nama";
-    public $sortGunabayar = '';
-    public $sortTahun = '';
+    public $perPage = 40;
+    public $sortField = "idkelas";
     public $sortKelas = '';
-    public $sortSiswa = '';
+    public $sortTahun = '';
     public $sortAsc = false;
     public $search = '';
     public $action;
@@ -48,42 +46,30 @@ class Tablecetakpdf extends Component
     {
         switch ($this->name) {
             case 'cetakpdf':
-                $cetakpdfs = Siswa::search($this->search)
+                $cetakpdfs = $this->model::search($this->search)
                     ->join('kelas', 'kelas.id', '=', 'siswa.idkelas')
                     ->select(
                         'siswa.id as id',
                         'siswa.nama as nama',
                         'siswa.nis as nis',
                         'siswa.tahun as tahun',
-                        'siswa.ortu as ortu',
-                        'siswa.ket as ket',
                         'siswa.idkelas as idkelas',
                         'kelas.tingkat as tingkat',
                         'kelas.jurusan as jurusan',
                     )
-                    ->orderBy($this->sortField, $this->sortAsc ? 'desc' : 'asc')
+                    ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                     ->orderBy('nama', 'asc')
                     ->where('idkelas', $this->sortKelas)
                     ->where('tahun', $this->sortTahun)
                     ->paginate($this->perPage);
-                if (!empty($this->pilihgunane) && !empty($this->pilihtahun)) {
-                    $this->saldogunane = Pembayaran::where('idgunabayar', $this->pilihgunane)
-                        ->where('tahun', $this->pilihtahun)
-                        ->sum('jumlahbayar');
-                    $cari = Gunabayar::findOrFail($this->pilihgunane);
-                    $this->gunabayare = $cari->gunabayar;
-                }
                 return [
                     "view" => 'livewire.table.cetakpdf',
                     "cetakpdfs" => $cetakpdfs,
-                    'tahuns' => Siswa::select('tahun')->distinct()->orderBy('tahun', 'asc')->get(),
-                    'gunans' => Gunabayar::where('ket', '1')->orderBy('urut')->get(),
-                    'gunans2' => Gunabayar::where('ket', '2')->orderBy('urut')->get(),
-                    'siswane' => Siswa::where('idkelas', $this->sortKelas)->where('tahun', $this->sortTahun)->orderBy('nama', 'asc')->get(),
+                    'kelas' => Kelas::orderBy('tingkat')->orderBy('jurusan')->get(),
                     "data" => array_to_object([
                         'href' => [
+                            'kelase' => Kelas::orderBy('tingkat')->orderBy('jurusan')->get(),
                             'tahune' => Siswa::select('tahun')->distinct()->orderBy('tahun', 'asc')->get(),
-                            'kelase' => Kelas::orderBy('tingkat', 'asc')->orderBy('jurusan', 'asc')->get(),
                         ]
                     ])
                 ];
@@ -95,7 +81,69 @@ class Tablecetakpdf extends Component
         }
     }
 
-
+    public function romawi()
+    {
+        $this->bulan = gmdate('d');
+        switch ($this->bulan) {
+            case '1':
+                $this->bulansurat = 'I';
+                break;
+            case '2':
+                $this->bulansurat = 'II';
+                break;
+            case '3':
+                $this->bulansurat = 'III';
+                break;
+            case '4':
+                $this->bulansurat = 'IV';
+                break;
+            case '5':
+                $this->bulansurat = 'V';
+                break;
+            case '6':
+                $this->bulansurat = 'VI';
+                break;
+            case '7':
+                $this->bulansurat = 'VII';
+                break;
+            case '8':
+                $this->bulansurat = 'VIII';
+                break;
+            case '9':
+                $this->bulansurat = 'IX';
+                break;
+            case '10':
+                $this->bulansurat = 'X';
+                break;
+            case '11':
+                $this->bulansurat = 'XI';
+                break;
+            case '12':
+                $this->bulansurat = 'XII';
+                break;
+        }
+    }
+    public function cetak($id)
+    {
+        $cari = Siswa::findOrFail($id);
+        $ckelas = Kelas::findOrFail($cari->idkelas);
+        $kelas = $ckelas->tingkat . '-' . $ckelas->jurusan;
+        $this->tahunsurat = gmdate('Y');
+        $this->romawi();
+        $data = [
+            'nosurat' => $this->nosurat,
+            'bulansurat' => $this->bulansurat,
+            'tahunsurat' => $this->tahunsurat,
+            'nama' => $cari->nama,
+            'kelas' => $kelas,
+            'nis' => $cari->nis,
+            'gunabayar' => Gunabayar::where('jenisket', 'SPP')->get(),
+        ];
+        $html = view('pages.cetakpdf.pdf', $data);
+        $mpdf = new Mpdf();
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('Tagihan ' . $cari->nama . '.pdf', Destination::DOWNLOAD);
+    }
     public function render()
     {
         $data = $this->get_pagination_data();

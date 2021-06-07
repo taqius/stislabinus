@@ -38,33 +38,6 @@ class Cetakpdf extends Component
     }
     public function render()
     {
-        if (!empty($this->pilihgunane) && !empty($this->tahun)) {
-            $this->saldogunane = Pembayaran::where('idgunabayar', $this->pilihgunane)
-                ->where('tahun', $this->tahun)
-                ->sum('jumlahbayar');
-            $cari = Gunabayar::findOrFail($this->pilihgunane);
-            $this->gunabayare = $cari->gunabayar;
-        }
-        if (!empty($this->pilihlaporan) && !empty($this->pilihtahun)) {
-            $this->pemasukans = Pembayaran::join('siswa', 'siswa.id', '=', 'pembayaran.idsiswa')
-                ->join('kelas', 'kelas.id', '=', 'pembayaran.idkelas')
-                ->join('gunabayar', 'gunabayar.id', '=', 'pembayaran.idgunabayar')
-                ->where('pembayaran.idgunabayar', $this->pilihlaporan)
-                ->where('pembayaran.tahun', $this->pilihtahun)
-                ->select(
-                    'pembayaran.id as id',
-                    'pembayaran.tanggalbayar as tanggal',
-                    'pembayaran.jumlahbayar as jumlahbayar',
-                    'pembayaran.tahun as tahun',
-                    'siswa.nama as nama',
-                    'kelas.tingkat as tingkat',
-                    'kelas.jurusan as jurusan',
-                    'gunabayar.gunabayar as gunabayar',
-                )
-                ->orderBy('pembayaran.tanggalbayar', 'desc')
-                ->orderBy('pembayaran.created_at', 'desc')
-                ->get();
-        }
         $data = [
             'now' => date('Y'),
             'nowm' => date('F'),
