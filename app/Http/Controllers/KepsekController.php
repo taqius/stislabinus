@@ -10,6 +10,12 @@ class KepsekController extends Controller
     {
         return view('pages.binus.keuangan-data');
     }
+    public function keuanganp()
+    {
+        return view('pages.binus.keuanganp2-data', [
+            'keuanganp2' => Pembayaran::class
+        ]);
+    }
     public function Pembayaranperkelas()
     {
         return view('pages.binus.pembayaranperkelas-data', [
