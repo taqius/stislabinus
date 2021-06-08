@@ -207,7 +207,7 @@ Assalamu'alaikum Wr. Wb.<br>
                 ->sum('jumlahbayar');
                 $cek = intval($g->wajibbayar) - intval($p);
             @endphp
-            @if ($cek == 0)
+            @if ($cek == 0 || $cek <=0)
             @else
                 <tr>
                     <td>
