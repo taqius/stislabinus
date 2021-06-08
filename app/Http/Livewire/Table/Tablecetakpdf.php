@@ -147,7 +147,7 @@ class Tablecetakpdf extends Component
         $html = view('pages.cetakpdf.pdf', $data);
         $mpdf = new Mpdf();
         $mpdf->WriteHTML($html);
-        $mpdf->Output('Tagihan ' . $cari->nama . '.pdf', Destination::DOWNLOAD);
+        $mpdf->Output('Tagihan ' . $cari->nama . '.pdf', Destination::INLINE);
     }
     public function render()
     {
