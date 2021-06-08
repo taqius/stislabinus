@@ -63,6 +63,12 @@ class TuController extends Controller
             'pembayaransppperkelas' => Pembayaran::class
         ]);
     }
+    public function Pembayaranperkelas()
+    {
+        return view('pages.binus.pembayaranperkelas-data', [
+            'pembayaranperkelas' => Pembayaran::class
+        ]);
+    }
     // public function pdf()
     // {
 

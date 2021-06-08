@@ -31,6 +31,7 @@ Route::group(["middleware" => ['auth:sanctum', 'verified']], function () {
         Route::get('/siswa', [TuController::class, 'siswa'])->name('siswa');
         Route::get('/pembayaran', [TuController::class, 'pembayaran'])->name('pembayaran');
         Route::get('/pembayaransppperkelastu', [TuController::class, 'pembayaransppperkelas'])->name('pembayaransppperkelastu');
+        Route::get('/pembayaranperkelastu', [TuController::class, 'pembayaranperkelas'])->name('pembayaranperkelastu');
         Route::get('/pembayaran/new', [TuController::class, 'pembayarannew'])->name('pembayaran.new');
         Route::get('/pembayaranpt', [TuController::class, 'pembayaranpt'])->name('pembayaranpt');
         Route::get('/pengeluaran', [TuController::class, 'pengeluaran'])->name('pengeluaran');
