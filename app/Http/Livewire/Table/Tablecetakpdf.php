@@ -83,7 +83,7 @@ class Tablecetakpdf extends Component
 
     public function romawi()
     {
-        $this->bulan = gmdate('d');
+        $this->bulan = gmdate('m');
         switch ($this->bulan) {
             case '1':
                 $this->bulansurat = 'I';
@@ -136,8 +136,13 @@ class Tablecetakpdf extends Component
             'tahunsurat' => $this->tahunsurat,
             'nama' => $cari->nama,
             'kelas' => $kelas,
+            'idkelas' => $cari->idkelas,
+            'tingkatkelas' => $ckelas->tingkat,
+            'jurusankelas' => $ckelas->jurusan,
             'nis' => $cari->nis,
-            'gunabayar' => Gunabayar::where('jenisket', 'SPP')->get(),
+            'tahun' => $this->sortTahun,
+            'gunabayarspp' => Gunabayar::where('ket', '1')->orderBy('urut', 'asc')->get(),
+            'gunabayarug' => Gunabayar::where('ket', '2')->get(),
         ];
         $html = view('pages.cetakpdf.pdf', $data);
         $mpdf = new Mpdf();
