@@ -12,12 +12,12 @@
     <tr>
         <td rowspan="4"><img src="../image/logo.png"></td>
         <td align="center">
-            <h3>YAYASAN BINA NUSANTARA</h3>
+            <h4>YAYASAN BINA NUSANTARA</h4>
         </td>
     </tr>
     <tr>
         <td align="center">
-            <h2>SMK BINA NUSANTARA SEMARANG</h2>
+            <h3>SMK BINA NUSANTARA SEMARANG</h3>
         </td>
     </tr>
     <tr>
