@@ -17,11 +17,6 @@
     </tr>
     <tr>
         <td align="center">
-            <h4>YAYASAN BINA NUSANTARA</h4>
-        </td>
-    </tr>
-    <tr>
-        <td align="center">
             <h3>SMK BINA NUSANTARA SEMARANG</h3>
         </td>
     </tr>
