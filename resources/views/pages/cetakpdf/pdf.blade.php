@@ -10,7 +10,12 @@
 
 <table width="100%" style="border-bottom:double; border-width:9px; ">
     <tr>
-        <td rowspan="4"><img src="../image/logo.png"></td>
+        <td rowspan="5"><img src="../image/logo.png"></td>
+        <td align="center">
+            &nbsp;
+        </td>
+    </tr>
+    <tr>
         <td align="center">
             <h4>YAYASAN BINA NUSANTARA</h4>
         </td>
