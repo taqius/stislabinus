@@ -26,7 +26,7 @@
                     <td>{{ $siswa->nis }}</td>
                     <td>{{ $siswa->nama }}</td>
                     <td>{{ $siswa->tingkat }} - {{ $siswa->jurusan }}</td>
-                    <td><button wire:click="cetak({{ $siswa->id }})" class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">Download</button></td>
+                    {{-- <td><button wire:click="cetak({{ $siswa->id }})" class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">Download</button></td> --}}
                     <td><a role="button" target="_blank" href="{{ route('savepdf',$siswa->id) }}" class="mr-3"><i class="fas fa-print"></i></i></a>
                     </td>
                 </tr>

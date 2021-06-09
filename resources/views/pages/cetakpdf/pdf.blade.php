@@ -10,7 +10,7 @@
 
 <table width="100%" style="border-bottom:double; border-width:9px; ">
     <tr>
-        <td rowspan="4"><img src="./image/logo.png"></td>
+        <td rowspan="4"><img src="../image/logo.png"></td>
         <td align="center">
             <h3>YAYASAN BINA NUSANTARA</h3>
         </td>
@@ -242,7 +242,7 @@ Assalamu'alaikum Wr. Wb.<br>
     Kepala Sekolah,
 </div>
 <div align="right">
-    <img src="./image/TTD BARCODE.jpeg" height="75" width="75"></td>
+    <img src="../image/TTD BARCODE.jpeg" height="75" width="75"></td>
 </div>
 <div align="right">
     Eka Aribawa,S.Pd.I
