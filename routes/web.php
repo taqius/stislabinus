@@ -46,6 +46,7 @@ Route::group(["middleware" => ['auth:sanctum', 'verified']], function () {
     });
     Route::group(['middleware' => ['role:wali kelas']], function () {
         Route::get('/cetakpdf', [WalikelasController::class, 'cetakpdf'])->name('cetakpdf');
+        Route::get('/savepdf/{id}', [WalikelasController::class, 'savepdf'])->name('savepdf');
         Route::get('/pembayaranperkelasw', [WalikelasController::class, 'pembayaranperkelas'])->name('pembayaranperkelasw');
         Route::get('/pembayaransppperkelasw', [WalikelasController::class, 'pembayaransppperkelas'])->name('pembayaransppperkelasw');
     });

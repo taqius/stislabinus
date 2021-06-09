@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Print</title>
+</head>
+<body>
+
 <table width="100%" style="border-bottom:double; border-width:9px; ">
     <tr>
         <td rowspan="4"><img src="./image/logo.png"></td>
@@ -237,3 +247,12 @@ Assalamu'alaikum Wr. Wb.<br>
 <div align="right">
     Eka Aribawa,S.Pd.I
 </div>
+<script>
+    window.load = print_d();
+
+    function print_d() {
+        window.print();
+    }
+</script>
+</body>
+</html>

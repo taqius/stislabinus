@@ -144,6 +144,7 @@ class Tablecetakpdf extends Component
             'gunabayarspp' => Gunabayar::where('ket', '1')->orderBy('urut', 'asc')->get(),
             'gunabayarug' => Gunabayar::where('ket', '2')->get(),
         ];
+        // return view('pages.cetakpdf.pdf',$data);
         $html = view('pages.cetakpdf.pdf', $data);
         $mpdf = new Mpdf();
         $mpdf->WriteHTML($html);
