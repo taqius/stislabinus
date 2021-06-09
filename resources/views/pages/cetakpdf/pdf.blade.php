@@ -17,7 +17,7 @@
     </tr>
     <tr>
         <td align="center">
-            <h3>SMK BINA NUSANTARA SEMARANG</h3>
+            <h4>Yayasan Bina Nusantara Semarang</h4>
             <h3>SMK BINA NUSANTARA SEMARANG</h3>
         </td>
     </tr>
